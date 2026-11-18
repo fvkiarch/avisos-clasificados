@@ -1,0 +1,147 @@
+enum tipo_COMPLETO_INCREMENTAL_PRUEBA_RESTAURACION_t {
+	COMPLETO
+	INCREMENTAL
+	PRUEBA_RESTAURACION
+}
+
+enum estado_EN_CURSO_OK_ERROR_t {
+	EN_CURSO
+	OK
+	ERROR
+}
+
+Table rol [headercolor: #175e7a] {
+	id_rol tinyint [ pk, increment, not null ]
+	nombre varchar(30) [ not null ]
+	descripcion varchar(150) [ not null ]
+
+	indexes {
+		(nombre) [ name: 'uq_rol_nombre', unique ]
+	}
+}
+
+Table permiso [headercolor: #175e7a] {
+	id_permiso smallint [ pk, increment, not null ]
+	codigo varchar(50) [ not null ]
+	descripcion varchar(150) [ not null ]
+
+	indexes {
+		(codigo) [ name: 'uq_permiso_codigo', unique ]
+	}
+}
+
+Table rol_permiso [headercolor: #175e7a] {
+	id_rol tinyint [ pk, not null ]
+	id_permiso smallint [ pk, not null ]
+}
+
+Table autor [headercolor: #175e7a] {
+	id_autor integer [ pk, increment, not null ]
+	nombre varchar(100) [ not null ]
+	email varchar(120) [ not null ]
+	telefono varchar(20) [ not null ]
+	password_hash varchar(255) [ not null ]
+	id_rol tinyint [ not null ]
+	activo tinyint [ not null, default: 1 ]
+
+	indexes {
+		(email) [ name: 'uq_autor_email', unique ]
+	}
+}
+
+Table categoria [headercolor: #175e7a] {
+	id_categoria tinyint [ pk, increment, not null ]
+	nombre varchar(20) [ not null ]
+
+	indexes {
+		(nombre) [ name: 'uq_categoria_nombre', unique ]
+	}
+}
+
+Table aviso [headercolor: #175e7a] {
+	id_aviso integer [ pk, increment, not null ]
+	titulo varchar(150) [ not null ]
+	fecha_creacion datetime [ not null, default: `CURRENT_TIMESTAMP(6)` ]
+	resaltado tinyint [ not null, default: 0 ]
+	id_autor integer [ not null ]
+	id_categoria tinyint [ not null ]
+}
+
+Table aviso_laboral [headercolor: #175e7a] {
+	id_aviso integer [ pk, not null ]
+	empresa varchar(100) [ not null ]
+	descripcion_cargo text [ not null ]
+	sueldo_mensual decimal(10,2) [ not null ]
+}
+
+Table aviso_producto [headercolor: #175e7a] {
+	id_aviso integer [ pk, not null ]
+	descripcion_producto text [ not null ]
+	precio decimal(12,2) [ not null ]
+}
+
+Table tipo_inmueble [headercolor: #175e7a] {
+	id_tipo_inmueble tinyint [ pk, increment, not null ]
+	nombre varchar(30) [ not null ]
+
+	indexes {
+		(nombre) [ name: 'uq_tipo_inmueble_nombre', unique ]
+	}
+}
+
+Table aviso_inmobiliario [headercolor: #175e7a] {
+	id_aviso integer [ pk, not null ]
+	id_tipo_inmueble tinyint [ not null ]
+	ubicacion varchar(150) [ not null ]
+	superficie_m2 decimal(10,2) [ not null ]
+	precio decimal(14,2) [ not null ]
+}
+
+Table auditoria_backup [headercolor: #175e7a] {
+	id_backup bigint [ pk, increment, not null ]
+	tipo tipo_COMPLETO_INCREMENTAL_PRUEBA_RESTAURACION_t [ not null ]
+	estado estado_EN_CURSO_OK_ERROR_t [ not null, default: 'EN_CURSO' ]
+	fecha_inicio datetime [ not null ]
+	fecha_fin datetime [ not null ]
+	archivo varchar(255) [ not null ]
+	tamano_bytes bigint [ not null ]
+	checksum_sha256 char(64) [ not null ]
+	usuario_bd varchar(100) [ not null ]
+	observaciones varchar(255) [ not null ]
+}
+
+Ref rol_tiene_permisos_asignados {
+	rol_permiso.id_rol > rol.id_rol [ delete: cascade, update: cascade ]
+}
+
+Ref permiso_tiene_roles_asignados {
+	rol_permiso.id_permiso > permiso.id_permiso [ delete: cascade, update: cascade ]
+}
+
+Ref rol_asignado_a_autores {
+	autor.id_rol > rol.id_rol [ delete: restrict, update: cascade ]
+}
+
+Ref autor_publica_avisos {
+	aviso.id_autor > autor.id_autor [ delete: restrict, update: cascade ]
+}
+
+Ref categoria_clasifica_avisos {
+	aviso.id_categoria > categoria.id_categoria [ delete: restrict, update: cascade ]
+}
+
+Ref aviso_tiene_datos_laborales {
+	aviso_laboral.id_aviso - aviso.id_aviso [ delete: cascade, update: cascade ]
+}
+
+Ref aviso_tiene_datos_producto {
+	aviso_producto.id_aviso - aviso.id_aviso [ delete: cascade, update: cascade ]
+}
+
+Ref aviso_tiene_datos_inmobiliarios {
+	aviso_inmobiliario.id_aviso - aviso.id_aviso [ delete: cascade, update: cascade ]
+}
+
+Ref tipo_inmueble_clasifica_avisos {
+	aviso_inmobiliario.id_tipo_inmueble > tipo_inmueble.id_tipo_inmueble [ delete: restrict, update: cascade ]
+}

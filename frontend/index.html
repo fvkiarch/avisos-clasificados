@@ -1,0 +1,545 @@
+<!doctype html>
+<html lang="es" data-theme="auto">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="description" content="Avisos clasificados de trabajo, productos e inmuebles." />
+    <title>Avisos · Clasificados</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <script type="module" src="js/app.js" defer></script>
+  </head>
+  <body>
+
+    <svg width="0" height="0" style="position: absolute" aria-hidden="true" focusable="false">
+      <symbol id="i-grid" viewBox="0 0 24 24">
+        <rect x="3" y="3" width="7" height="7" rx="2" />
+        <rect x="14" y="3" width="7" height="7" rx="2" />
+        <rect x="3" y="14" width="7" height="7" rx="2" />
+        <rect x="14" y="14" width="7" height="7" rx="2" />
+      </symbol>
+      <symbol id="i-briefcase" viewBox="0 0 24 24">
+        <rect x="2" y="7" width="20" height="14" rx="3" />
+        <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
+        <path d="M2 13h20" />
+      </symbol>
+      <symbol id="i-tag" viewBox="0 0 24 24">
+        <path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8z" />
+        <circle cx="7.5" cy="7.5" r="1.2" />
+      </symbol>
+      <symbol id="i-home" viewBox="0 0 24 24">
+        <path d="M3 11 12 3l9 8" />
+        <path d="M5 10v10h14V10" />
+        <path d="M10 20v-6h4v6" />
+      </symbol>
+      <symbol id="i-search" viewBox="0 0 24 24">
+        <circle cx="11" cy="11" r="7" />
+        <path d="m20 20-3.5-3.5" />
+      </symbol>
+      <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" /></symbol>
+      <symbol id="i-star" viewBox="0 0 24 24">
+        <path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z" />
+      </symbol>
+      <symbol id="i-trash" viewBox="0 0 24 24">
+        <path d="M4 7h16" />
+        <path d="M9 7V4h6v3" />
+        <path d="M6 7l1 13h10l1-13" />
+      </symbol>
+      <symbol id="i-moon" viewBox="0 0 24 24">
+        <path d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5z" />
+      </symbol>
+      <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" /></symbol>
+      <symbol id="i-logout" viewBox="0 0 24 24">
+        <path d="M9 4H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h4" />
+        <path d="m16 17 5-5-5-5" />
+        <path d="M21 12H9" />
+      </symbol>
+      <symbol id="i-arrow" viewBox="0 0 24 24">
+        <path d="M5 12h14" />
+        <path d="m13 6 6 6-6 6" />
+      </symbol>
+	<symbol id="i-settings" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+	  <circle cx="12" cy="12" r="3" />
+	  <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1Z" />
+	</symbol>
+    </svg>
+
+    <a class="skip-link" href="#list">Saltar al contenido</a>
+
+    <header class="bar">
+      <a class="brand" href="./" aria-label="Avisos, inicio">
+        <span class="brand-logo" aria-hidden="true"></span>
+        <span class="brand-text">Avisos</span>
+      </a>
+
+      <form class="search" id="search-form" role="search" autocomplete="off">
+        <svg class="icon"><use href="#i-search" /></svg>
+        <input
+          id="q"
+          name="q"
+          type="search"
+          placeholder="Buscar avisos…"
+          aria-label="Buscar avisos"
+          maxlength="100"
+        />
+      </form>
+
+      <nav class="actions" aria-label="Acciones">
+        <button class="btn btn-icon" id="theme-btn" type="button" aria-label="Cambiar tema claro u oscuro">
+          <svg class="icon"><use href="#i-moon" /></svg>
+        </button>
+        <button
+          class="btn btn-primary"
+          id="publish-btn"
+          type="button"
+          data-permission="listing.create"
+          hidden
+        >
+          <svg class="icon"><use href="#i-plus" /></svg><span>Publicar</span>
+        </button>
+        <button class="btn btn-light" id="login-btn" type="button" data-only="anon">Ingresar</button>
+        <div class="user" data-only="auth" hidden>
+          <span class="avatar" data-field="initials" aria-hidden="true"></span>
+          <span class="user-info"><strong data-field="name"></strong><small data-field="role"></small></span>
+		  <button class="btn btn-icon" id="admin-settings" type="button" aria-label="Panel de administración">
+			<svg class="icon"><use href="#i-settings" /></svg>
+		  </button>
+          <button class="btn btn-icon" id="logout-btn" type="button" aria-label="Cerrar sesión">
+            <svg class="icon"><use href="#i-logout" /></svg>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker-track">
+        <span
+          >Clasificados ✦ Trabajo ✦ Productos ✦ Inmuebles ✦ Clasificados ✦ Trabajo ✦ Productos ✦ Inmuebles ✦
+          Clasificados ✦ Trabajo ✦ Productos ✦ Inmuebles ✦
+        </span>
+        <span
+          >Clasificados ✦ Trabajo ✦ Productos ✦ Inmuebles ✦ Clasificados ✦ Trabajo ✦ Productos ✦ Inmuebles ✦
+          Clasificados ✦ Trabajo ✦ Productos ✦ Inmuebles ✦
+        </span>
+        <span
+          >Clasificados ✦ Trabajo ✦ Productos ✦ Inmuebles ✦ Clasificados ✦ Trabajo ✦ Productos ✦ Inmuebles ✦
+          Clasificados ✦ Trabajo ✦ Productos ✦ Inmuebles ✦
+        </span>
+      </div>
+    </div>
+
+    <main>
+      <section class="bento" aria-label="Resumen y filtros">
+        <article class="tile hero">
+          <p class="eyebrow">Clasificados 2026</p>
+          <h1>Publicá tus avisos.<br /><span class="marker">Encontrá al siguiente dueño.</span></h1>
+          <p class="hero-text">
+            Trabajo, productos e inmuebles en un solo lugar. Los avisos destacados aparecen primero y todo se
+            actualiza al instante.
+          </p>
+          <ul class="legend">
+            <li><i class="dot" data-category="Laboral"></i>Laboral</li>
+            <li><i class="dot" data-category="Producto"></i>Producto</li>
+            <li><i class="dot" data-category="Inmobiliario"></i>Inmobiliario</li>
+          </ul>
+        </article>
+
+        <article class="tile stat">
+          <p class="eyebrow">Avisos activos</p>
+          <p class="number" data-field="total" aria-live="polite">–</p>
+        </article>
+
+        <article class="tile stat stat-featured">
+          <p class="eyebrow">
+            <svg class="icon"><use href="#i-star" /></svg>Destacados
+          </p>
+          <p class="number" data-field="highlighted" aria-live="polite">–</p>
+        </article>
+
+        <article class="tile cta">
+          <div>
+            <h2>Publicá en segundos</h2>
+            <p>Elegí una categoría, completá los datos y listo.</p>
+          </div>
+          <button class="btn btn-primary" id="cta-btn" type="button">
+            <span data-field="cta-text">Empezar</span><svg class="icon"><use href="#i-arrow" /></svg>
+          </button>
+        </article>
+
+        <button class="tile filter" type="button" data-category="" aria-pressed="true">
+          <svg class="icon icon-lg"><use href="#i-grid" /></svg>
+          <span class="filter-name">Todos</span>
+          <span class="filter-count" data-field="count-all">–</span>
+        </button>
+        <button class="tile filter" type="button" data-category="Laboral" aria-pressed="false">
+          <svg class="icon icon-lg"><use href="#i-briefcase" /></svg>
+          <span class="filter-name">Laboral</span>
+          <span class="filter-count" data-field="count-Laboral">–</span>
+        </button>
+        <button class="tile filter" type="button" data-category="Producto" aria-pressed="false">
+          <svg class="icon icon-lg"><use href="#i-tag" /></svg>
+          <span class="filter-name">Producto</span>
+          <span class="filter-count" data-field="count-Producto">–</span>
+        </button>
+        <button class="tile filter" type="button" data-category="Inmobiliario" aria-pressed="false">
+          <svg class="icon icon-lg"><use href="#i-home" /></svg>
+          <span class="filter-name">Inmobiliario</span>
+          <span class="filter-count" data-field="count-Inmobiliario">–</span>
+        </button>
+      </section>
+
+      <section class="section" aria-labelledby="list-title">
+        <div class="section-head">
+          <h2 id="list-title">Avisos</h2>
+          <button class="btn btn-light" id="mine-btn" type="button" data-only="auth" aria-pressed="false" hidden>Mis avisos</button>
+          <p class="section-sub" id="summary" aria-live="polite"></p>
+        </div>
+
+        <div class="list" id="list" aria-busy="false"></div>
+
+        <div class="empty" id="empty" hidden>
+          <svg class="icon icon-lg"><use href="#i-search" /></svg>
+          <h3>No encontramos avisos</h3>
+          <p data-field="empty-text">Probá con otra búsqueda o categoría.</p>
+        </div>
+
+        <div class="more">
+          <button class="btn btn-light" id="more-btn" type="button" hidden>Cargar más avisos</button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">Tecnicatura Redes y Software · Proyecto para Bases de Datos & Programación</footer>
+
+    <template id="tpl-listing">
+      <article class="listing">
+        <header class="listing-head">
+          <span class="chip"><i class="dot"></i><span data-field="category"></span></span>
+          <span class="chip chip-star" data-if="highlighted" hidden
+            ><svg class="icon"><use href="#i-star" /></svg>Destacado</span
+          >
+        </header>
+        <h3 class="listing-title" data-field="title"></h3>
+        <p class="listing-detail" data-field="detail"></p>
+        <p class="listing-ref" data-if="reference" hidden><span data-field="reference"></span></p>
+        <footer class="listing-foot">
+          <p class="price" data-field="amountText"></p>
+          <div class="author">
+            <span class="avatar avatar-sm" data-field="initials" aria-hidden="true"></span>
+            <span class="author-info"
+              ><strong data-field="author"></strong><small data-field="time"></small
+            ></span>
+          </div>
+          <button
+            class="btn btn-icon btn-danger"
+            type="button"
+            data-action="delete"
+            data-if="canDelete"
+            hidden
+            aria-label="Eliminar aviso"
+          >
+            <svg class="icon"><use href="#i-trash" /></svg>
+          </button>
+        </footer>
+      </article>
+    </template>
+
+    <template id="tpl-skeleton">
+      <div class="listing skeleton" aria-hidden="true">
+        <span class="sk sk-chip"></span><span class="sk sk-title"></span><span class="sk sk-line"></span
+        ><span class="sk sk-line sk-short"></span>
+      </div>
+    </template>
+
+    <dialog id="dlg-login" class="dialog" aria-labelledby="dlg-login-title">
+      <form id="form-login" method="dialog" novalidate>
+        <header class="dialog-head">
+          <h2 id="dlg-login-title">Ingresar</h2>
+          <button class="btn btn-icon" type="button" data-close aria-label="Cerrar">
+            <svg class="icon"><use href="#i-x" /></svg>
+          </button>
+        </header>
+        <p class="alert" data-error-for="_general" role="alert" hidden></p>
+        <label class="field"
+          >Email
+          <input name="email" type="email" autocomplete="username" required maxlength="120" />
+          <small class="error" data-error-for="email"></small>
+        </label>
+        <label class="field"
+          >Contraseña
+          <input name="password" type="password" autocomplete="current-password" required />
+          <small class="error" data-error-for="password"></small>
+        </label>
+        <button class="btn btn-primary btn-block" type="submit">
+          <span data-field="btn-text">Ingresar</span>
+        </button>
+        <div class="demo">
+          <p>Cuentas de demostración (clave <code>Clave123!</code>)</p>
+          <div class="demo-buttons">
+            <button type="button" class="chip chip-button" data-demo="lucia@avisos.test">Publicador</button>
+            <button type="button" class="chip chip-button" data-demo="admin@avisos.test">
+              Administrador
+            </button>
+            <button type="button" class="chip chip-button" data-demo="carla@avisos.test">Visitante</button>
+          </div>
+        </div>
+      </form>
+    </dialog>
+	
+
+	<dialog id="dlg-admin" class="dialog dialog-wide" aria-labelledby="dlg-admin-title">
+  <form method="dialog" novalidate>
+
+    <!-- Encabezado -->
+    <header class="dialog-head">
+      <h2 id="dlg-admin-title">Gestión de Usuarios</h2>
+
+      <button class="btn btn-icon" type="button" data-close aria-label="Cerrar">
+        <svg class="icon">
+          <use href="#i-x" />
+        </svg>
+      </button>
+    </header>
+
+    <!-- Crear nuevo usuario -->
+    <div style="padding: 1rem 0;">
+
+      <h3 style="font-size: 1rem; margin-bottom: 0.75rem;">
+        Crear nuevo usuario
+      </h3>
+
+      <div class="row">
+        <label class="field">
+          Nombre
+          <input
+            name="name"
+            id="admin-user-name"
+            required
+            maxlength="100"
+          />
+        </label>
+
+        <label class="field">
+          Email
+          <input
+            name="email"
+            id="admin-user-email"
+            type="email"
+            required
+            maxlength="120"
+          />
+        </label>
+      </div>
+
+      <div class="row" style="margin-top: 0.75rem;">
+
+        <label class="field">
+          Contraseña
+          <input
+            name="password"
+            id="admin-user-password"
+            type="password"
+            required
+          />
+        </label>
+
+        <label class="field">
+          Rol
+          <select name="role" id="admin-user-role" required>
+            <option value="visitante">Visitante</option>
+            <option value="publicador">Publicador</option>
+            <option value="administrador">Administrador</option>
+          </select>
+        </label>
+
+      </div>
+
+      <div style="margin-top: 1rem;">
+        <button
+          class="btn btn-primary"
+          type="button"
+          id="btn-submit-user"
+        >
+          Crear usuario
+        </button>
+      </div>
+
+    </div>
+
+    <hr style="
+      border: 0;
+      border-top: 1px solid var(--border-color);
+      margin: 1rem 0;
+    " />
+
+    <!-- Usuarios registrados -->
+    <div style="padding: 0.5rem 0 1rem 0;">
+
+      <h3 style="font-size: 1rem; margin-bottom: 0.75rem;">
+        Usuarios registrados
+      </h3>
+
+      <div style="
+        max-height: 260px;
+        overflow-y: auto;
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius, 8px);
+      ">
+
+        <table style="
+          width: 100%;
+          border-collapse: collapse;
+          text-align: left;
+          font-size: 0.9rem;
+        ">
+
+          <thead>
+            <tr style="
+              border-bottom: 1px solid var(--border-color);
+              background: var(--bg-hover, rgba(0, 0, 0, 0.03));
+            ">
+              <th style="padding: 10px 14px;">ID</th>
+              <th style="padding: 10px 14px;">Nombre</th>
+              <th style="padding: 10px 14px;">Email</th>
+              <th style="padding: 10px 14px;">Rol</th>
+              <th style="padding: 10px 14px; text-align: right;">
+                Acciones
+              </th>
+            </tr>
+          </thead>
+
+          <tbody id="users-tbody"></tbody>
+
+        </table>
+
+      </div>
+
+    </div>
+
+    <!-- Pie del modal -->
+    <div class="dialog-foot">
+      <button class="btn btn-light" type="button" data-close>
+        Cerrar
+      </button>
+    </div>
+
+  </form>
+</dialog>
+
+
+    <dialog id="dlg-publish" class="dialog dialog-wide" aria-labelledby="dlg-publish-title">
+      <form id="form-publish" method="dialog" novalidate>
+        <header class="dialog-head">
+          <h2 id="dlg-publish-title">Publicar aviso</h2>
+          <button class="btn btn-icon" type="button" data-close aria-label="Cerrar">
+            <svg class="icon"><use href="#i-x" /></svg>
+          </button>
+        </header>
+        <p class="alert" data-error-for="_general" role="alert" hidden></p>
+
+        <div class="row">
+          <label class="field"
+            >Categoría
+            <select name="category" id="sel-category" required>
+              <option value="">Seleccione…</option>
+            </select>
+            <small class="error" data-error-for="category"></small>
+          </label>
+          <label class="field field-2"
+            >Título
+            <input name="title" maxlength="150" required />
+            <small class="error" data-error-for="title"></small>
+          </label>
+        </div>
+
+        <label class="switch" data-permission="listing.highlight" hidden>
+          <input type="checkbox" name="highlighted" value="true" /><span
+            >Resaltar aviso (aparece primero)</span
+          >
+        </label>
+
+        <fieldset data-category-fields="Laboral" hidden disabled>
+          <legend>Datos laborales</legend>
+          <label class="field"
+            >Empresa <input name="company" maxlength="100" /><small
+              class="error"
+              data-error-for="company"
+            ></small
+          ></label>
+          <label class="field"
+            >Descripción del cargo <textarea name="job_description" rows="3"></textarea
+            ><small class="error" data-error-for="job_description"></small
+          ></label>
+          <label class="field"
+            >Sueldo mensual (opcional) <input name="monthly_salary" inputmode="decimal" /><small
+              class="error"
+              data-error-for="monthly_salary"
+            ></small
+          ></label>
+        </fieldset>
+
+        <fieldset data-category-fields="Producto" hidden disabled>
+          <legend>Datos del producto</legend>
+          <label class="field"
+            >Descripción <textarea name="product_description" rows="3"></textarea
+            ><small class="error" data-error-for="product_description"></small
+          ></label>
+          <label class="field"
+            >Precio <input name="price" inputmode="decimal" /><small
+              class="error"
+              data-error-for="price"
+            ></small
+          ></label>
+        </fieldset>
+
+        <fieldset data-category-fields="Inmobiliario" hidden disabled>
+          <legend>Datos del inmueble</legend>
+          <div class="row">
+            <label class="field"
+              >Tipo
+              <select name="property_type_id" id="sel-type"></select
+              ><small class="error" data-error-for="property_type_id"></small
+            ></label>
+            <label class="field"
+              >Superficie (m²) <input name="area_m2" inputmode="decimal" /><small
+                class="error"
+                data-error-for="area_m2"
+              ></small
+            ></label>
+          </div>
+          <label class="field"
+            >Ubicación <input name="location" maxlength="150" /><small
+              class="error"
+              data-error-for="location"
+            ></small
+          ></label>
+          <label class="field"
+            >Precio <input name="price" inputmode="decimal" /><small
+              class="error"
+              data-error-for="price"
+            ></small
+          ></label>
+        </fieldset>
+
+        <div class="dialog-foot">
+          <button class="btn btn-light" type="button" data-close>Cancelar</button>
+          <button class="btn btn-primary" type="submit"><span data-field="btn-text">Publicar</span></button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog id="dlg-confirm" class="dialog dialog-small" aria-labelledby="dlg-confirm-title">
+      <form method="dialog">
+        <h2 id="dlg-confirm-title">Confirmar</h2>
+        <p data-field="confirm-text"></p>
+        <div class="dialog-foot">
+          <button class="btn btn-light" value="no" type="submit">Cancelar</button>
+          <button class="btn btn-danger-solid" value="yes" type="submit">Eliminar</button>
+        </div>
+      </form>
+    </dialog>
+
+    <div class="toasts" id="toasts" role="status" aria-live="polite"></div>
+  </body>
+</html>
