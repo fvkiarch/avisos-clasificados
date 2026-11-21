@@ -8,7 +8,34 @@ $username = getenv('DB_USER') ?: 'root';
 $password = getenv('DB_PASSWORD') ?: '';
 $dbname   = 'avisos_clasificados';
 
-$mysql = getenv('MYSQL_BIN') ?: '/opt/lampp/bin/mysql';
+function detectarMysql(): string
+{
+    $env = getenv('MYSQL_BIN');
+    if ($env) {
+        return $env;
+    }
+
+    $candidatos = PHP_OS_FAMILY === 'Windows'
+        ? [
+            'C:\\xampp\\mysql\\bin\\mysql.exe',
+            'C:\\xampp\\mysql\\bin\\mariadb.exe',
+        ]
+        : [
+            '/opt/lampp/bin/mysql',
+            '/usr/bin/mysql',
+            '/usr/bin/mariadb',
+        ];
+
+    foreach ($candidatos as $c) {
+        if (is_file($c)) {
+            return $c;
+        }
+    }
+
+    return $candidatos[0];
+}
+
+$mysql = detectarMysql();
 
 
 $sqlFiles = [
@@ -37,8 +64,6 @@ function ejecutarSql(
     ];
 
     $environment = getenv();
-
-    $environment = $_ENV;
 
     if ($password !== '') {
         $environment['MYSQL_PWD'] = $password;
@@ -84,10 +109,8 @@ try {
 
     echo "[1/2] Creando/verificando base de datos...\n";
 
-    if (!is_executable($mysql)) {
-        throw new RuntimeException(
-            "No se encontró el cliente MariaDB: $mysql"
-        );
+    if (!is_file($mysql)) {
+        throw new RuntimeException("No se encontró el cliente MariaDB: $mysql");
     }
 
     $pdo = new PDO(

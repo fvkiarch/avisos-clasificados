@@ -10,6 +10,7 @@ set "DB_HOST=127.0.0.1"
 set "DB_USER=root"
 set "DB_PASSWORD="
 set "PHP=C:\xampp\php\php.exe"
+set "MYSQL_BIN=C:\xampp\mysql\bin\mysql.exe"
 
 set "API_HOST=127.0.0.1"
 set "API_PORT=8099"
