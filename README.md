@@ -3,6 +3,8 @@ Proyecto para Bases de Datos &amp; Programación PHP
 
 Modo de uso:
 
+Tener levantado primero MySQL con XAMPP u otro mecanismo.
+
 Renombrar .env.example a .env
 
 Generé scripts tanto para Linux como para Windows (serve.bat y serve.sh).
